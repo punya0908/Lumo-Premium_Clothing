@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FX0LCHBSVG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FX0LCHBSVG');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - Lumo</title>
+    
+    <!-- Authentication Protection - Must run before page loads -->
+    <script>
+        (function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                // Store intended destination
+                localStorage.setItem('redirectAfterLogin', 'collections.html');
+                // Redirect to login immediately
+                window.location.replace('auth.html');
+            }
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>Lumo</h1>
+                        <span class="logo-tagline">Premium Clothing</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collections.html" class="auth-required active">Collections</a></li>
+                    <li><a href="new-arrivals.html" class="auth-required">New Arrivals</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="btn-cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <div class="user-profile">
+                        <button class="btn-profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span class="profile-name">Login</span>
+                        </button>
+                        <div class="profile-dropdown">
+                            <div class="dropdown-header">
+                                <span class="user-name">Welcome</span>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                My Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <polyline points="17 11 19 13 23 9"></polyline>
+                                </svg>
+                                My Orders
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                Wishlist
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item logout-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="shop-hero">
+        <div class="container">
+            <div class="shop-hero-content">
+                <span class="section-label">Premium Quality</span>
+                <h1 class="page-title">Our Collections</h1>
+                <p class="page-subtitle">Curated styles for every occasion</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="shop-content">
+        <div class="container">
+            <div class="shop-layout">
+                <!-- Sidebar Filters -->
+                <aside class="shop-sidebar">
+                    <div class="filter-section">
+                        <h3>Categories</h3>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" checked data-category="all">
+                                <span>All Products</span>
+                                <span class="count">(48)</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" data-category="men">
+                                <span>Men's Wear</span>
+                                <span class="count">(18)</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" data-category="women">
+                                <span>Women's Wear</span>
+                                <span class="count">(22)</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" data-category="accessories">
+                                <span>Accessories</span>
+                                <span class="count">(8)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Price Range</h3>
+                        <div class="price-range">
+                            <input type="range" min="0" max="10000" value="10000" class="price-slider">
+                            <div class="price-values">
+                                <span>₹0</span>
+                                <span class="max-price">₹10,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Size</h3>
+                        <div class="size-options">
+                            <button class="size-btn">XS</button>
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                            <button class="size-btn">XXL</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Color</h3>
+                        <div class="color-options">
+                            <button class="color-btn" style="background: #000" data-color="black"></button>
+                            <button class="color-btn" style="background: #fff; border: 1px solid #ddd" data-color="white"></button>
+                            <button class="color-btn" style="background: #1e40af" data-color="blue"></button>
+                            <button class="color-btn" style="background: #dc2626" data-color="red"></button>
+                            <button class="color-btn" style="background: #16a34a" data-color="green"></button>
+                            <button class="color-btn" style="background: #ca8a04" data-color="yellow"></button>
+                            <button class="color-btn" style="background: #9333ea" data-color="purple"></button>
+                            <button class="color-btn" style="background: #ec4899" data-color="pink"></button>
+                        </div>
+                    </div>
+
+                    <button class="btn-clear-filters">Clear All Filters</button>
+                </aside>
+
+                <!-- Products Area -->
+                <div class="shop-main">
+                    <!-- Filters Bar -->
+                    <div class="filters-bar">
+                        <div class="results-info">
+                            Showing <strong>48</strong> products
+                        </div>
+                        <div class="sort-group">
+                            <select class="sort-select">
+                                <option value="featured">Featured</option>
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=500&fit=crop" alt="Premium Cotton Shirt">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Premium Cotton Shirt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(156)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop" alt="Designer Maxi Dress">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Designer Maxi Dress</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(89)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹3,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge">BESTSELLER</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop" alt="Classic Denim Jacket">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Classic Denim Jacket</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(234)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹4,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400&h=500&fit=crop" alt="Professional Blazer">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Professional Blazer</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(67)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹5,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-badge sale">-15%</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400&h=500&fit=crop" alt="Leather Handbag">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Leather Handbag</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(145)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹3,229</span>
+                                    <span class="original-price">₹3,799</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=500&fit=crop" alt="Slim Fit Chinos">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Slim Fit Chinos</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(92)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-badge">BESTSELLER</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=500&fit=crop" alt="Floral Summer Dress">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Floral Summer Dress</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(198)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,799</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-badge sale">-10%</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=500&fit=crop" alt="Casual Sneakers">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Casual Sneakers</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(276)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹3,149</span>
+                                    <span class="original-price">₹3,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 9 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400&h=500&fit=crop" alt="Wool Blend Coat">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Wool Blend Coat</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(54)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹7,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 10 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&h=500&fit=crop" alt="Silk Scarf">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Silk Scarf</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(83)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,299</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 11 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge">BESTSELLER</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=500&fit=crop" alt="Athletic Joggers">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Athletic Joggers</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(342)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,199</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 12 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=500&fit=crop" alt="Leather Ankle Boots">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Leather Ankle Boots</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(127)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹5,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 13 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=400&h=500&fit=crop" alt="Polo T-Shirt">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Polo T-Shirt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(211)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,799</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 14 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-badge sale">-20%</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&h=500&fit=crop" alt="Bohemian Skirt">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Bohemian Skirt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(156)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,999</span>
+                                    <span class="original-price">₹2,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 15 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=500&fit=crop" alt="Sunglasses">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Sunglasses</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(189)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 16 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=500&fit=crop" alt="Formal Trousers">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Formal Trousers</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(164)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹3,299</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 17 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop" alt="Cashmere Sweater">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Cashmere Sweater</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(98)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹6,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 18 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-badge">BESTSELLER</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=500&fit=crop" alt="Canvas Backpack">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Canvas Backpack</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(245)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,799</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 19 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop" alt="Hooded Sweatshirt">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Hooded Sweatshirt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(178)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,699</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 20 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1564257577-1c4d96283e3d?w=400&h=500&fit=crop" alt="Wrap Blouse">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Wrap Blouse</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(132)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,299</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 21 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1624222247344-550fb60583d1?w=400&h=500&fit=crop" alt="Leather Belt">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Leather Belt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(201)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 22 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge sale">-15%</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=500&fit=crop" alt="Cargo Shorts">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Cargo Shorts</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(145)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,699</span>
+                                    <span class="original-price">₹1,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 23 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop" alt="Linen Pants">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Linen Pants</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(87)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹3,199</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 24 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-badge">BESTSELLER</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400&h=500&fit=crop" alt="Wrist Watch">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Wrist Watch</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(312)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹4,999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 25 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop" alt="V-Neck Sweater">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">V-Neck Sweater</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(154)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,899</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 26 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&h=500&fit=crop" alt="Midi Pencil Skirt">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Midi Pencil Skirt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(119)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,199</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 27 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=500&fit=crop" alt="Crossbody Bag">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Crossbody Bag</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(167)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹2,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 28 -->
+                        <div class="product-card" data-category="men">
+                            <div class="product-badge new">NEW</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop" alt="Bomber Jacket">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Men's Wear</div>
+                                <h3 class="product-name">Bomber Jacket</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(76)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹5,499</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 29 -->
+                        <div class="product-card" data-category="women">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&h=500&fit=crop" alt="Turtleneck Top">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Women's Wear</div>
+                                <h3 class="product-name">Turtleneck Top</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(143)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹1,899</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product 30 -->
+                        <div class="product-card" data-category="accessories">
+                            <div class="product-badge">BESTSELLER</div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=500&fit=crop" alt="Baseball Cap">
+                                <div class="product-overlay">
+                                    <button class="btn-quick-view">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Accessories</div>
+                                <h3 class="product-name">Baseball Cap</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(289)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">₹999</span>
+                                </div>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn" disabled>Previous</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lumo</h3>
+                    <p>Your destination for premium clothing and accessories. Quality, style, and sustainability combined.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Instagram">i</a>
+                        <a href="#" aria-label="Twitter">t</a>
+                        <a href="#" aria-label="Pinterest">p</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Men's Collection</a></li>
+                        <li><a href="#">Women's Collection</a></li>
+                        <li><a href="new-arrivals.html">New Arrivals</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Information</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lumo Premium Clothing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

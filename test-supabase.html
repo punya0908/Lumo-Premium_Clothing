@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Connection Test - Lumo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .test-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .test-section {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .test-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .test-result {
+            font-family: monospace;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+        .success {
+            color: #27ae60;
+            border-left-color: #27ae60;
+        }
+        .error {
+            color: #e74c3c;
+            border-left-color: #e74c3c;
+        }
+        .info {
+            color: #3498db;
+            border-left-color: #3498db;
+        }
+        .loading {
+            color: #f39c12;
+            border-left-color: #f39c12;
+        }
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .btn:hover {
+            background: #5568d3;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔍 Supabase Connection Test</h1>
+        
+        <div class="test-section loading" id="config-test">
+            <div class="test-label">1️⃣ Configuration Check</div>
+            <div class="test-result" id="config-result">Testing...</div>
+        </div>
+
+        <div class="test-section loading" id="connection-test">
+            <div class="test-label">2️⃣ Connection Test</div>
+            <div class="test-result" id="connection-result">Waiting...</div>
+        </div>
+
+        <div class="test-section loading" id="table-test">
+            <div class="test-label">3️⃣ Profiles Table Check</div>
+            <div class="test-result" id="table-result">Waiting...</div>
+        </div>
+
+        <div class="test-section loading" id="auth-test">
+            <div class="test-label">4️⃣ Authentication System</div>
+            <div class="test-result" id="auth-result">Waiting...</div>
+        </div>
+
+        <button class="btn" id="run-test" onclick="runTests()">Run All Tests</button>
+        <button class="btn" id="create-table" onclick="showTableSQL()" style="background: #3498db; margin-top: 0.5rem;">Show Table Creation SQL</button>
+
+        <a href="auth.html" class="back-link">← Go to Login Page</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+        const supabase = window.supabaseClient;
+
+        async function runTests() {
+            console.log('Starting Supabase tests...');
+            
+            // Test 1: Configuration
+            testConfiguration();
+            
+            // Test 2: Connection
+            await testConnection();
+            
+            // Test 3: Table exists
+            await testTable();
+            
+            // Test 4: Auth system
+            await testAuth();
+        }
+
+        function testConfiguration() {
+            const configSection = document.getElementById('config-test');
+            const configResult = document.getElementById('config-result');
+            
+            if (window.supabaseClient) {
+                configSection.className = 'test-section success';
+                configResult.innerHTML = `
+                    ✅ Supabase client initialized successfully!<br>
+                    📍 URL: ${SUPABASE_URL}<br>
+                    🔑 Key: ${SUPABASE_ANON_KEY.substring(0, 20)}...
+                `;
+            } else {
+                configSection.className = 'test-section error';
+                configResult.innerHTML = '❌ Supabase client not initialized';
+            }
+        }
+
+        async function testConnection() {
+            const connectionSection = document.getElementById('connection-test');
+            const connectionResult = document.getElementById('connection-result');
+            
+            try {
+                const { data, error } = await supabase.auth.getSession();
+                
+                if (error) throw error;
+                
+                connectionSection.className = 'test-section success';
+                connectionResult.innerHTML = `
+                    ✅ Successfully connected to Supabase!<br>
+                    📊 Session status: ${data.session ? 'Active' : 'No active session'}
+                `;
+            } catch (error) {
+                connectionSection.className = 'test-section error';
+                connectionResult.innerHTML = `❌ Connection failed: ${error.message}`;
+            }
+        }
+
+        async function testTable() {
+            const tableSection = document.getElementById('table-test');
+            const tableResult = document.getElementById('table-result');
+            
+            try {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .limit(1);
+                
+                if (error) {
+                    if (error.code === '42P01') {
+                        tableSection.className = 'test-section error';
+                        tableResult.innerHTML = `
+                            ❌ Table 'profiles' does not exist!<br>
+                            <br>
+                            <strong>Action Required:</strong><br>
+                            Click "Show Table Creation SQL" button below to see the SQL you need to run in Supabase SQL Editor.
+                        `;
+                    } else {
+                        throw error;
+                    }
+                } else {
+                    tableSection.className = 'test-section success';
+                    tableResult.innerHTML = `
+                        ✅ Table 'profiles' exists and is accessible!<br>
+                        📊 Current records: ${data.length || 0}
+                    `;
+                }
+            } catch (error) {
+                tableSection.className = 'test-section error';
+                tableResult.innerHTML = `❌ Table check failed: ${error.message}`;
+            }
+        }
+
+        async function testAuth() {
+            const authSection = document.getElementById('auth-test');
+            const authResult = document.getElementById('auth-result');
+            
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                
+                authSection.className = 'test-section success';
+                authResult.innerHTML = `
+                    ✅ Authentication system working!<br>
+                    👤 Current user: ${user ? user.email : 'Not logged in'}<br>
+                    🔐 Ready to accept signups and logins
+                `;
+            } catch (error) {
+                authSection.className = 'test-section error';
+                authResult.innerHTML = `❌ Auth test failed: ${error.message}`;
+            }
+        }
+
+        function showTableSQL() {
+            const sql = `-- Run this SQL in your Supabase SQL Editor
+-- Go to: SQL Editor → New Query → Paste this code → Run
+
+-- Create profiles table
+CREATE TABLE IF NOT EXISTS profiles (
+  id UUID REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
+  first_name TEXT,
+  last_name TEXT,
+  email TEXT UNIQUE,
+  phone TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- Enable Row Level Security (RLS)
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Users can view own profile" ON profiles;
+DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
+DROP POLICY IF EXISTS "Users can insert own profile" ON profiles;
+
+-- Create policy to allow users to read their own profile
+CREATE POLICY "Users can view own profile" 
+  ON profiles FOR SELECT 
+  USING (auth.uid() = id);
+
+-- Create policy to allow users to update their own profile
+CREATE POLICY "Users can update own profile" 
+  ON profiles FOR UPDATE 
+  USING (auth.uid() = id);
+
+-- Create policy to allow users to insert their own profile
+CREATE POLICY "Users can insert own profile" 
+  ON profiles FOR INSERT 
+  WITH CHECK (auth.uid() = id);
+
+-- Create function to handle updated_at
+CREATE OR REPLACE FUNCTION handle_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Drop existing trigger if it exists
+DROP TRIGGER IF EXISTS set_updated_at ON profiles;
+
+-- Create trigger for updated_at
+CREATE TRIGGER set_updated_at
+  BEFORE UPDATE ON profiles
+  FOR EACH ROW
+  EXECUTE FUNCTION handle_updated_at();`;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(sql).then(() => {
+                alert('✅ SQL copied to clipboard!\n\nNow:\n1. Go to Supabase dashboard\n2. Click SQL Editor\n3. Create new query\n4. Paste the SQL\n5. Click Run\n6. Come back and run tests again');
+            }).catch(() => {
+                // Fallback: show in alert
+                alert('Copy this SQL and run it in Supabase SQL Editor:\n\n' + sql);
+            });
+
+            // Also log to console
+            console.log('SQL for creating profiles table:');
+            console.log(sql);
+        }
+
+        // Run tests automatically on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(runTests, 500);
+        });
+    </script>
+</body>
+</html>

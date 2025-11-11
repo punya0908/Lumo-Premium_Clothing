@@ -421,10 +421,12 @@ document.querySelectorAll('.feature-card, .category-card, .product-card').forEac
 // ==================== Search Functionality ====================
 const searchButton = document.querySelector('.btn-search');
 
-searchButton.addEventListener('click', () => {
-    // Create search overlay (you can expand this)
-    alert('Search functionality will be implemented here. This would typically open a search modal or redirect to a search page.');
-});
+if (searchButton) {
+    searchButton.addEventListener('click', () => {
+        // Search functionality - could implement search modal here
+        console.log('Search clicked');
+    });
+}
 
 // ==================== Navbar Scroll Effect ====================
 let lastScroll = 0;
@@ -463,8 +465,8 @@ categoryCards.forEach(card => {
         
         const categoryName = card.querySelector('h3').textContent;
         console.log(`Navigating to ${categoryName} category`);
-        // Here you would typically navigate to the category page
-        alert(`Loading ${categoryName}...`);
+        // Navigate to collections page
+        window.location.href = 'collections.html';
     });
 });
 
@@ -490,7 +492,6 @@ if (loginButton) {
                 localStorage.clear();
                 loginButton.textContent = 'Login';
                 loginButton.style.background = '';
-                alert('You have been logged out.');
                 
                 // Reload page to reset state
                 setTimeout(() => {
@@ -509,7 +510,7 @@ if (viewAllButton) {
         if (!isUserLoggedIn) {
             showLoginPrompt();
         } else {
-            alert('This will navigate to the full products catalog page.');
+            window.location.href = 'collections.html';
         }
     });
 }
@@ -519,7 +520,7 @@ const promoBannerButton = document.querySelector('.promo-banner .btn-primary');
 
 if (promoBannerButton) {
     promoBannerButton.addEventListener('click', () => {
-        alert('Navigating to sale items...');
+        window.location.href = 'collections.html';
     });
 }
 
@@ -532,9 +533,17 @@ heroButtons.forEach(button => {
         console.log(`User clicked: ${action}`);
         
         if (action.includes('Shop')) {
-            alert('Taking you to our collection...');
+            if (!isUserLoggedIn) {
+                showLoginPrompt();
+            } else {
+                window.location.href = 'collections.html';
+            }
         } else if (action.includes('Explore') || action.includes('Learn') || action.includes('View')) {
-            alert('Loading more information...');
+            if (!isUserLoggedIn) {
+                showLoginPrompt();
+            } else {
+                window.location.href = 'new-arrivals.html';
+            }
         }
     });
 });
@@ -542,13 +551,11 @@ heroButtons.forEach(button => {
 // ==================== Cart Button ====================
 const cartButton = document.querySelector('.btn-cart');
 
-cartButton.addEventListener('click', () => {
-    if (cartCount > 0) {
-        alert(`You have ${cartCount} item(s) in your cart. Cart page will open here.`);
-    } else {
-        alert('Your cart is empty. Start shopping!');
-    }
-});
+if (cartButton) {
+    cartButton.addEventListener('click', () => {
+        window.location.href = 'cart.html';
+    });
+}
 
 // ==================== Performance: Lazy Loading Images ====================
 // When you add real images, you can use this for lazy loading

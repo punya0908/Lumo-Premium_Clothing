@@ -388,23 +388,15 @@
 }
 
 .btn-quick-view {
-    padding: 0.75rem 1.5rem;
-    background: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transform: translateY(20px);
-    transition: var(--transition);
+    display: none; /* Hidden - click on image instead for quick view */
 }
 
 .product-card:hover .btn-quick-view {
-    transform: translateY(0);
+    display: none;
 }
 
 .btn-quick-view:hover {
-    background: var(--primary-color);
-    color: white;
+    display: none;
 }
 
 .product-info {

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FX0LCHBSVG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FX0LCHBSVG');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Request - Lumo Premium Clothing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .custom-request-section {
+            min-height: 80vh;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .request-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .request-header h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .request-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>Lumo</h1>
+                        <span class="logo-tagline">Premium Clothing</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn-cart" onclick="window.location.href='cart.html'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Custom Request Form -->
+    <section class="custom-request-section">
+        <div class="request-container">
+            <div class="request-header">
+                <h1>Custom Color Request</h1>
+                <p>Looking for a different color? Let us know and we'll get back to you!</p>
+            </div>
+
+            <form id="customRequestForm">
+                <div class="form-group">
+                    <label for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" name="customerName" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerEmail">Email Address *</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" placeholder="+91 XXXXX XXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="productName">Product Name *</label>
+                    <input type="text" id="productName" name="productName" required placeholder="e.g., Denim Jacket">
+                </div>
+
+                <div class="form-group">
+                    <label for="requestedColor">Requested Color *</label>
+                    <input type="text" id="requestedColor" name="requestedColor" required placeholder="e.g., Navy Blue, Forest Green">
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalDetails">Additional Details</label>
+                    <textarea id="additionalDetails" name="additionalDetails" placeholder="Any specific requirements or questions..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">Submit Request</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">✓</div>
+                <h2>Request Submitted!</h2>
+                <p>Thank you for your request. We'll get back to you within 24 hours with availability and pricing information.</p>
+                <button class="btn-submit" onclick="window.location.href='collections.html'">Continue Shopping</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lumo Premium Clothing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Handle form submission
+        document.getElementById('customRequestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = {
+                customerName: document.getElementById('customerName').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                productName: document.getElementById('productName').value,
+                requestedColor: document.getElementById('requestedColor').value,
+                additionalDetails: document.getElementById('additionalDetails').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            try {
+                // Send email via Web3Forms
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        access_key: '8d3bfe1c-3eb9-44f7-981c-b34b7b702e99',
+                        subject: `Custom Color Request - ${formData.productName}`,
+                        from_name: 'Lumo Custom Requests',
+                        to: formData.customerEmail,
+                        message: `
+Custom Color Request Received
+
+Dear ${formData.customerName},
+
+Thank you for your interest in our products! We've received your custom color request and will get back to you within 24 hours.
+
+REQUEST DETAILS:
+Product: ${formData.productName}
+Requested Color: ${formData.requestedColor}
+${formData.additionalDetails ? 'Additional Details: ' + formData.additionalDetails : ''}
+
+We'll check availability and send you:
+- Color availability confirmation
+- Pricing information
+- Estimated delivery time
+
+If you have any urgent questions, feel free to contact us directly.
+
+Best regards,
+The Lumo Team
+Premium Clothing
+                        `,
+                        replyto: formData.customerEmail,
+                        botcheck: false
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    document.getElementById('customRequestForm').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('active');
+                    
+                    // Save to localStorage
+                    const requests = JSON.parse(localStorage.getItem('lumo_custom_requests') || '[]');
+                    requests.push(formData);
+                    localStorage.setItem('lumo_custom_requests', JSON.stringify(requests));
+                } else {
+                    throw new Error('Failed to send request');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error submitting your request. Please try again or contact us directly.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Request';
+            }
+        });
+
+        // Update cart count
+        const cart = JSON.parse(localStorage.getItem('lumo_cart') || '[]');
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = totalItems;
+    </script>
+
+    <!-- Tidio AI Assistant -->
+    <script src="//code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
+</body>
+</html>

@@ -967,11 +967,27 @@
         </div>
     </footer>
 
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <button class="quick-view-close" onclick="closeQuickView()">×</button>
+            <img class="quick-view-image" id="quickViewImage" src="" alt="">
+            <div class="quick-view-info">
+                <h3 id="quickViewTitle"></h3>
+                <p id="quickViewPrice"></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="script.js"></script>
     <script src="shop.js"></script>
     <script src="cart.js"></script>
+    <script src="quick-view.js"></script>
+    
+    <!-- Tidio AI Assistant -->
+    <script src="//code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
 </body>
 </html>

@@ -12,7 +12,19 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Lumo</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>About Us - Lumo Premium Clothing | Our Story & Values</title>
+    <meta name="description" content="Learn about Lumo's journey in sustainable fashion. Founded in 2020, we're committed to quality craftsmanship, ethical practices, and premium materials. Serving 50+ cities worldwide.">
+    <meta name="keywords" content="about Lumo, sustainable fashion brand, ethical clothing, premium materials, fashion brand story, quality craftsmanship, eco-friendly fashion, clothing brand values">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.lumo.com/about.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="About Lumo - Premium Sustainable Fashion Brand">
+    <meta property="og:description" content="Discover Lumo's commitment to quality, sustainability, and timeless style. Serving fashion enthusiasts across 50+ cities.">
+    <meta property="og:url" content="https://www.lumo.com/about.html">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="about-page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +37,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <a href="index.html">
                         <h1>Lumo</h1>
                         <span class="logo-tagline">Premium Clothing</span>
                     </a>
@@ -37,7 +49,7 @@
                     <li><a href="about.html" class="active">About</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="btn-search">
+                    <button class="btn-search" aria-label="Search" title="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
@@ -97,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="mobile-menu-toggle">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" title="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -410,7 +422,11 @@
     <script src="supabase-config.js"></script>
     <script src="script.js"></script>
     
+    <!-- AI Chat Widget -->
+    <link rel="stylesheet" href="ai-chat.css">
+    <script src="ai-chat.js"></script>
+    
     <!-- Tidio AI Assistant -->
-    <script src="//code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
+    <script src="https://code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
 </body>
 </html>

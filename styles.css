@@ -68,6 +68,11 @@ body {
     flex-direction: column;
 }
 
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .logo h1 {
     font-family: var(--font-heading);
     font-size: 2rem;
@@ -583,6 +588,11 @@ body {
     font-weight: 500;
     font-size: 0.9rem;
     margin-bottom: 1rem;
+}
+
+/* Anchor wrapping .section-label should inherit no decoration */
+a .section-label {
+    text-decoration: none;
 }
 
 /* ==================== Category Section ==================== */
@@ -1344,3 +1354,10 @@ body {
         opacity: 1;
     }
 }
+
+/* Utility button class for test-supabase.html (blue variant) */
+.btn-primary {
+    background: linear-gradient(135deg, #3498db 0%, #2b6cb0 100%) !important;
+    margin-top: 0.5rem !important;
+}
+

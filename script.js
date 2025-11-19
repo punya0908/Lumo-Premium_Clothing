@@ -374,24 +374,87 @@ wishlistButtons.forEach(button => {
 // ==================== Newsletter Form ====================
 const newsletterForm = document.querySelector('.newsletter-form');
 
-newsletterForm.addEventListener('submit', (e) => {
+newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const emailInput = newsletterForm.querySelector('input[type="email"]');
+    const button = newsletterForm.querySelector('button');
+    const originalText = button.textContent;
     const email = emailInput.value;
     
     if (email) {
-        // Show success message
-        const button = newsletterForm.querySelector('button');
-        const originalText = button.textContent;
-        button.textContent = 'Subscribed! ✓';
-        button.style.background = '#27ae60';
+        // Update button state
+        button.textContent = 'Subscribing...';
+        button.disabled = true;
         
-        emailInput.value = '';
+        // Prepare form data for Web3Forms
+        const formData = new FormData(newsletterForm);
         
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.style.background = '';
-        }, 3000);
+        // Add custom message for the confirmation email
+        const emailMessage = `
+Thank you for subscribing to Lumo Premium Clothing newsletter!
+
+We're thrilled to have you join our community of fashion enthusiasts.
+
+As a subscriber, you'll be the first to know about:
+✨ New arrivals and exclusive collections
+🎁 Special offers and early access to sales
+💎 Styling tips and fashion trends
+🌟 VIP-only events and giveaways
+
+Stay stylish,
+The Lumo Team
+
+---
+You subscribed with: ${email}
+        `;
+        
+        formData.append('message', emailMessage);
+        
+        try {
+            // Send email via Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Show success message
+                button.textContent = 'Subscribed! ✓';
+                button.style.background = '#27ae60';
+                emailInput.value = '';
+                
+                // Show additional confirmation
+                const confirmMsg = document.createElement('p');
+                confirmMsg.textContent = 'Check your email for confirmation!';
+                confirmMsg.style.color = '#27ae60';
+                confirmMsg.style.marginTop = '10px';
+                confirmMsg.style.fontSize = '14px';
+                newsletterForm.appendChild(confirmMsg);
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    button.disabled = false;
+                    if (confirmMsg.parentNode) {
+                        confirmMsg.remove();
+                    }
+                }, 5000);
+            } else {
+                throw new Error('Subscription failed');
+            }
+        } catch (error) {
+            console.error('Newsletter subscription error:', error);
+            button.textContent = 'Error - Try Again';
+            button.style.background = '#e74c3c';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+                button.disabled = false;
+            }, 3000);
+        }
     }
 });
 

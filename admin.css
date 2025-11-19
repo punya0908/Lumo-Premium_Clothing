@@ -188,6 +188,23 @@ body {
     justify-content: center;
 }
 
+/* Stat icon gradient backgrounds */
+.stat-icon-products {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-icon-orders {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.stat-icon-customers {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.stat-icon-revenue {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
 .stat-info h3 {
     font-size: 1.75rem;
     margin-bottom: 0.25rem;

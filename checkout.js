@@ -91,6 +91,7 @@ Thank you for shopping with Lumo!
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                // Replace with your Web3Forms access key. Do NOT commit real keys.
                 access_key: '8d3bfe1c-3eb9-44f7-981c-b34b7b702e99',
                 subject: `Lumo Order Confirmation - ${orderDetails.orderId}`,
                 from_name: 'Lumo Premium Clothing',

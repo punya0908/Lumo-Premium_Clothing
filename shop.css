@@ -18,6 +18,7 @@
     border-radius: 50px;
     font-size: 0.9rem;
     margin-bottom: 1rem;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -74,7 +75,8 @@
     background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
-/* Firefox Scrollbar */
+/* Firefox Scrollbar - Progressive enhancement for Firefox and Chrome 121+ */
+/* Browsers without support gracefully fall back to default scrollbars */
 .shop-sidebar {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) #f1f5f9;
@@ -135,6 +137,7 @@
     background: linear-gradient(to right, var(--primary-color) 0%, var(--primary-color) 100%, #e5e7eb 100%);
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .price-slider::-webkit-slider-thumb {
@@ -398,6 +401,16 @@
 .btn-quick-view:hover {
     display: none;
 }
+
+/* Individual color swatches for color buttons */
+.color-black { background: #000; }
+.color-white { background: #fff; border: 1px solid #ddd; }
+.color-blue { background: #1e40af; }
+.color-red { background: #dc2626; }
+.color-green { background: #16a34a; }
+.color-yellow { background: #ca8a04; }
+.color-purple { background: #9333ea; }
+.color-pink { background: #ec4899; }
 
 .product-info {
     padding: 1.5rem;

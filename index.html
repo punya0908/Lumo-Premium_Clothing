@@ -12,7 +12,67 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumo - Premium Clothing Brand</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Lumo - Premium Clothing Brand | Shop Sustainable Fashion Online</title>
+    <meta name="description" content="Discover Lumo's premium clothing collection featuring sustainable fashion, custom colors, and timeless designs. Free shipping on orders over $50. Shop men's and women's clothing online.">
+    <meta name="keywords" content="premium clothing, sustainable fashion, online clothing store, custom color clothing, men's fashion, women's fashion, designer clothing, ethical fashion, eco-friendly clothes, trendy outfits, quality apparel, Lumo clothing">
+    <meta name="author" content="Lumo Premium Clothing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.lumo.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lumo.com/">
+    <meta property="og:title" content="Lumo - Premium Clothing Brand | Sustainable Fashion">
+    <meta property="og:description" content="Shop premium, sustainable fashion at Lumo. Discover timeless designs with custom color options. Free shipping on orders over $50.">
+    <meta property="og:image" content="https://www.lumo.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.lumo.com/">
+    <meta property="twitter:title" content="Lumo - Premium Clothing Brand | Sustainable Fashion">
+    <meta property="twitter:description" content="Shop premium, sustainable fashion at Lumo. Discover timeless designs with custom color options.">
+    <meta property="twitter:image" content="https://www.lumo.com/images/twitter-image.jpg">
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "Lumo Premium Clothing",
+      "description": "Premium sustainable fashion brand offering custom color clothing and timeless designs",
+      "url": "https://www.lumo.com",
+      "logo": "https://www.lumo.com/logo.png",
+      "priceRange": "$29 - $199",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "openingHours": "Mo-Su 00:00-23:59",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Clothing Collections",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Men's Collection"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Women's Collection"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +94,7 @@
                     <li><a href="about.html">About</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="btn-search">
+                    <button class="btn-search" aria-label="Search" title="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
@@ -94,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="mobile-menu-toggle">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" title="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -239,7 +299,7 @@
                     </div>
                     <div class="category-info">
                         <h3>Men's Wear</h3>
-                        <button class="btn-link">Shop Now →</button>
+                        <button class="btn-link auth-required" onclick="window.location.href='collections.html?category=men'">Shop Now →</button>
                     </div>
                 </div>
                 <div class="category-card">
@@ -248,7 +308,7 @@
                     </div>
                     <div class="category-info">
                         <h3>Women's Wear</h3>
-                        <button class="btn-link">Shop Now →</button>
+                        <button class="btn-link auth-required" onclick="window.location.href='collections.html?category=women'">Shop Now →</button>
                     </div>
                 </div>
                 <div class="category-card">
@@ -257,7 +317,7 @@
                     </div>
                     <div class="category-info">
                         <h3>Accessories</h3>
-                        <button class="btn-link">Shop Now →</button>
+                        <button class="btn-link auth-required" onclick="window.location.href='collections.html?category=accessories'">Shop Now →</button>
                     </div>
                 </div>
             </div>
@@ -379,7 +439,7 @@
         <div class="banner-content">
             <h2>Winter Sale - Up to 60% Off</h2>
             <p>Limited time offer on selected items</p>
-            <button class="btn-primary">Shop Sale</button>
+            <button class="btn-primary auth-required" onclick="window.location.href='collections.html?sale=true'">Shop Sale</button>
         </div>
     </section>
 
@@ -388,7 +448,7 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <a href="about.html" style="text-decoration: none;"><span class="section-label">Our Story</span></a>
+                    <a href="about.html"><span class="section-label">Our Story</span></a>
                     <h2>Fashion that Speaks to You</h2>
                     <p>At Lumo, we believe that clothing is more than just fabric—it's a form of self-expression. Our carefully curated collections blend timeless elegance with contemporary trends, ensuring you look and feel your best every day.</p>
                     <p>From premium materials to sustainable practices, every piece in our collection tells a story of quality, craftsmanship, and conscious fashion.</p>
@@ -421,7 +481,10 @@
                 <h2>Stay Updated</h2>
                 <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <input type="hidden" name="access_key" value="8d3bfe1c-3eb9-44f7-981c-b34b7b702e99">
+                    <input type="hidden" name="subject" value="Welcome to Lumo Newsletter!">
+                    <input type="hidden" name="from_name" value="Lumo Premium Clothing">
                     <button type="submit" class="btn-primary">Subscribe</button>
                 </form>
             </div>
@@ -436,37 +499,37 @@
                     <h3>Lumo</h3>
                     <p>Your destination for premium clothing and accessories. Quality, style, and sustainability combined.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">f</a>
-                        <a href="#" aria-label="Instagram">i</a>
-                        <a href="#" aria-label="Twitter">t</a>
-                        <a href="#" aria-label="Pinterest">p</a>
+                        <a href="https://www.facebook.com/profile.php?id=61562364835365" aria-label="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+                        <a href="https://www.instagram.com/lumo.premium.clothing/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">i</a>
+                        <a href="https://x.com/Lumo_Clothing" aria-label="X" target="_blank" rel="noopener noreferrer">t</a>
+                        <a href="https://www.pinterest.com/LumoPremiumClothing/" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">p</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Shop</h4>
                     <ul>
-                        <li><a href="#">Men's Collection</a></li>
-                        <li><a href="#">Women's Collection</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Sale</a></li>
+                        <li><a href="collections.html?category=men" class="auth-required">Men's Collection</a></li>
+                        <li><a href="collections.html?category=women" class="auth-required">Women's Collection</a></li>
+                        <li><a href="new-arrivals.html" class="auth-required">New Arrivals</a></li>
+                        <li><a href="collections.html?sale=true" class="auth-required">Sale</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Customer Service</h4>
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Shipping Information</a></li>
-                        <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="custom-request.html">Contact Us</a></li>
+                        <li><a href="about.html#shipping">Shipping Information</a></li>
+                        <li><a href="about.html#returns">Returns & Exchanges</a></li>
+                        <li><a href="collections.html#size-guide" class="auth-required">Size Guide</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>About</h4>
                     <ul>
                         <li><a href="about.html">Our Story</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="about.html#sustainability">Sustainability</a></li>
+                        <li><a href="custom-request.html">Careers</a></li>
+                        <li><a href="about.html#privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -495,7 +558,11 @@
     <script src="cart.js"></script>
     <script src="quick-view.js"></script>
     
-    <!-- Tidio AI Assistant -->
-    <script src="//code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
+    <!-- AI Chat Widget -->
+    <link rel="stylesheet" href="ai-chat.css">
+    <script src="ai-chat.js"></script>
+    
+    <!-- Tidio AI Assistant (Integrated with custom chat) -->
+    <script src="https://code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
 </body>
 </html>

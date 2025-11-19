@@ -12,7 +12,22 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Request - Lumo Premium Clothing</title>
+    <title>Custom Request - Lumo Premium Clothing | Personalized Fashion</title>
+    <meta name="description" content="Request custom clothing at Lumo. Choose your preferred colors, fabrics, and designs. We craft personalized sustainable fashion pieces tailored to your vision. Fast turnaround and premium quality.">
+    <meta name="keywords" content="custom clothing, personalized fashion, custom request, bespoke clothing, custom colors, tailored apparel, made to order, custom design, Lumo custom, personalized apparel">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lumo.com/custom-request.html">
+    <meta property="og:title" content="Custom Request - Lumo Premium Clothing | Personalized Fashion">
+    <meta property="og:description" content="Request custom clothing at Lumo. Choose your colors, fabrics, and designs for personalized sustainable fashion.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.lumo.com/custom-request.html">
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -140,7 +155,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <a href="index.html">
                         <h1>Lumo</h1>
                         <span class="logo-tagline">Premium Clothing</span>
                     </a>
@@ -257,6 +272,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        // Replace with your Web3Forms access key. Do NOT commit real keys.
                         access_key: '8d3bfe1c-3eb9-44f7-981c-b34b7b702e99',
                         subject: `Custom Color Request - ${formData.productName}`,
                         from_name: 'Lumo Custom Requests',
@@ -318,6 +334,6 @@ Premium Clothing
     </script>
 
     <!-- Tidio AI Assistant -->
-    <script src="//code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
+    <script src="https://code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
 </body>
 </html>

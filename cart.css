@@ -40,6 +40,12 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
+/* Hidden by default; toggled via JS */
+#empty-cart,
+#cart-items-list {
+    display: none;
+}
+
 .empty-cart svg {
     color: #ddd;
     margin-bottom: 20px;

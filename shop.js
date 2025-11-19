@@ -4,6 +4,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
 
+    // Check URL parameters for category filter
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    const saleParam = urlParams.get('sale');
+
+    // Apply URL parameter filters on page load
+    if (categoryParam) {
+        const categoryCheckbox = document.querySelector(`.filter-checkbox input[data-category="${categoryParam}"]`);
+        const allCheckbox = document.querySelector('.filter-checkbox input[data-category="all"]');
+        
+        if (categoryCheckbox) {
+            // Uncheck "All Products"
+            if (allCheckbox) allCheckbox.checked = false;
+            
+            // Check the specific category
+            categoryCheckbox.checked = true;
+            
+            // Filter products
+            productCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (category === categoryParam) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    if (saleParam === 'true') {
+        // Filter to show only sale items (you can add data-sale attribute to products)
+        productCards.forEach(card => {
+            const isOnSale = card.querySelector('.badge')?.textContent.includes('Sale') || 
+                           card.querySelector('.badge')?.textContent.includes('%');
+            if (isOnSale) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
     if (filterBtns.length > 0) {
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {

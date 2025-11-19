@@ -12,7 +12,22 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - Lumo</title>
+    <title>Shopping Cart - Lumo Premium Clothing | Your Selected Items</title>
+    <meta name="description" content="Review your cart at Lumo. Custom-colored sustainable fashion items ready for checkout. Free shipping on orders over ₹1,500. Secure payment and fast delivery.">
+    <meta name="keywords" content="shopping cart, cart items, checkout, online shopping cart, Lumo cart, fashion cart, order summary, secure checkout">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lumo.com/cart.html">
+    <meta property="og:title" content="Shopping Cart - Lumo Premium Clothing">
+    <meta property="og:description" content="Review your selected items and proceed to secure checkout.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.lumo.com/cart.html">
+    
+    <!-- Robots -->
+    <meta name="robots" content="noindex, nofollow">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cart.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +39,8 @@
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo">
+                    <a href="index.html">
                         <h1>Lumo</h1>
                         <span class="logo-tagline">Premium Clothing</span>
                     </a>
@@ -37,7 +52,7 @@
                     <li><a href="about.html">About</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="btn-search">
+                    <button class="btn-search" aria-label="Search" title="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
@@ -112,7 +127,7 @@
             <div class="cart-content">
                 <!-- Cart Items -->
                 <div class="cart-items">
-                    <div id="empty-cart" class="empty-cart" style="display: none;">
+                    <div id="empty-cart" class="empty-cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
@@ -123,7 +138,7 @@
                         <a href="collections.html" class="btn-shop">Browse Products</a>
                     </div>
 
-                    <div id="cart-items-list" class="cart-items-list" style="display: none;">
+                    <div id="cart-items-list" class="cart-items-list">
                         <!-- Cart items will be dynamically inserted here -->
                     </div>
                 </div>
@@ -223,7 +238,11 @@
     <script src="script.js"></script>
     <script src="cart.js"></script>
     
+    <!-- AI Chat Widget -->
+    <link rel="stylesheet" href="ai-chat.css">
+    <script src="ai-chat.js"></script>
+    
     <!-- Tidio AI Assistant -->
-    <script src="//code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
+    <script src="https://code.tidio.co/8759hqhfnhsaszdxo1rs5trv25ivdptn.js" async></script>
 </body>
 </html>
